@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: ID!
+  name: String!
+  role: String!
+  password: String!
+  birthday: String
+  phone: Float
+  email: String
+  address: String
+  photoID: String
+}
+
+type TokenPayload {
+  token: String
+}
+
+type Syllable {
+  id: ID!
+  onset: String!
+  rhyme: String!
+  createAt: DateTime!
+  updateAt: DateTime!
+  word: Word
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Word {
+  id: ID!
+  spelling: String!
+  createAt: DateTime!
+  updateAt: DateTime!
+}
+
+type Query {
+  hello: String!
+  findUserById(id: String!): User!
+  findAllUsers: [User!]!
+  findWordById(id: String!): Word!
+}
+
+type Mutation {
+  login(loginInput: LoginInput!): TokenPayload!
+  register(registerInput: RegisterInput!): TokenPayload!
+  addWord(wordInput: WordInput!): Word!
+}
+
+input LoginInput {
+  name: String!
+  password: String!
+  role: String!
+}
+
+input RegisterInput {
+  name: String!
+  password: String!
+  role: String!
+  birthday: String
+  phone: Float
+  email: String
+  address: String
+  photoID: String
+}
+
+input WordInput {
+  spelling: String!
+}
