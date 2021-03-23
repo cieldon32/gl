@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { PhonemeController } from './phoneme.controller';
 import { PhonemeService } from './phoneme.service';
+import {PhonemeResolver} from './phoneme.resolver';
+
 
 @Module({
-  controllers: [PhonemeController],
-  providers: [PhonemeService]
+  providers: [PhonemeService, PhonemeResolver],
+  exports: [PhonemeService]
 })
 export class PhonemeModule {}

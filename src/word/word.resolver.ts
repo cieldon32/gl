@@ -15,15 +15,23 @@ export class WordResolver {
     return this.wordService.getOneById(id);
   }
 
+  @Query(() => [Word])
+  public getAllWords(): Promise<Word[]> {
+    return this.wordService.getAll();
+  }
+
   @Mutation(() => Word)
   public addWord(
     @Args('wordInput') input: WordInput,
   ): Promise<Word> {
-    return this.wordService.createPatient(input);
+    return this.wordService.createWord(input);
   }
 
-  @Query(() => [Word])
-  public getAllWords(): Promise<Word[]> {
-    return this.wordService.getAll();
+  @Mutation(() => Word)
+  public updateWord(
+    @Args('id') id: string,
+    @Args('wordInput') input: WordInput,
+  ): Promise<Word> {
+    return this.wordService.updateWord(id, input);
   }
 }

@@ -11,11 +11,23 @@ export class WordService {
     private readonly wordRepository: Repository<Word>
   ) {}
 
-  public async createPatient(
+  public async createWord(
     input: WordInput,
   ): Promise<Word> {
     const word = new Word();
     word.spelling = input.spelling;
+    return await this.wordRepository.save(word);
+  }
+
+  public async updateWord(
+    id: string,
+    input: WordInput,
+  ): Promise<Word> {
+    let word = await this.getOneById(id);
+    word = {
+      ...word,
+      ...input
+    }
     return await this.wordRepository.save(word);
   }
 

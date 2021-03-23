@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MorphemeController } from './morpheme.controller';
+import {MorphemeResolver} from './morpheme.resolver';
 import { MorphemeService } from './morpheme.service';
 
 @Module({
-  controllers: [MorphemeController],
-  providers: [MorphemeService]
+  providers: [MorphemeService, MorphemeResolver],
+  exports: [MorphemeService]
 })
 export class MorphemeModule {}

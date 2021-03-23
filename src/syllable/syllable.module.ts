@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { SyllableController } from './syllable.controller';
 import { SyllableService } from './syllable.service';
+import {SyllableResolver} from './syllable.resolver';
 
 @Module({
-  controllers: [SyllableController],
-  providers: [SyllableService]
+  providers: [SyllableService, SyllableResolver],
+  exports: [SyllableService]
 })
 export class SyllableModule {}
