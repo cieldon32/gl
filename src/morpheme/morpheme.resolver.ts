@@ -11,7 +11,7 @@ export class MorphemeResolver {
   ) {}
 
   @Query(() => Morpheme)
-  public async findWordById(@Args('id') id: string,): Promise<Word> {
+  public async findWordById(@Args('id') id: string,): Promise<Morpheme> {
     return this.morphemeService.getOneById(id);
   }
 
@@ -22,9 +22,9 @@ export class MorphemeResolver {
 
   @Mutation(() => Morpheme)
   public addMorpheme(
-    @Args('morphemeInput') input: MorphemeInput,
-  ): Promise<Morpheme> {
-    return this.morphemeService.createMorpheme(input);
+    @Args('morphemeInput') inputs: MorphemeInput[],
+  ): Promise<Morpheme[]> {
+    return this.morphemeService.createMorpheme(inputs);
   }
 
   @Mutation(() => Morpheme)

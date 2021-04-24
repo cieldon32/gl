@@ -22,9 +22,9 @@ export class SyllableResolver {
 
   @Mutation(() => Syllable)
   public addMorpheme(
-    @Args('syllableInput') input: SyllableInput,
-  ): Promise<Syllable> {
-    return this.syllableService.createSyllable(input);
+    @Args('syllableInput') inputs: SyllableInput[],
+  ): Promise<Syllable[]> {
+    return this.syllableService.createSyllable(inputs);
   }
 
   @Mutation(() => Syllable)

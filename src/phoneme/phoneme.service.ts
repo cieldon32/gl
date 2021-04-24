@@ -12,7 +12,7 @@ export class PhonemeService {
   ) {}
 
   public async createPhoneme(
-    inputs: PhonemeInput[],
+    input: PhonemeInput,
   ): Promise<Phoneme> {
     let phoneme = new Phoneme();
     return await this.phonemeRepository.save(phoneme);; 

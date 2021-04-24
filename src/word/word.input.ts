@@ -1,6 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
-import {Morpheme} from '../morpheme/morpheme.entity';
-import {Syllable} from '../syllable/syllable.entity';
+import {Morpheme} from 'src/morpheme';
+import {Syllable} from 'src/syllable';
 @InputType()
 export class WordInput {
 

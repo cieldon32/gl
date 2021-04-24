@@ -11,10 +11,19 @@ export class SyllableService {
   ) {}
 
   public async createSyllable(
-    inputs: SyllableInput,
-  ): Promise<Syllable> {
-    let syllable = new Syllable();
-    return await this.syllableRepository.save(syllable);; 
+    inputs: SyllableInput[],
+  ): Promise<Syllable[]> {
+    let syllables: Syllable[] = [];
+    inputs.map((item: SyllableInput) => {
+      let syllable = new Syllable();
+      syllable = {
+        ...syllable,
+        ...item,
+      }
+      syllables.push(syllable);
+      this.syllableRepository.save(syllable);
+    });
+    return syllables; 
   }
 
   public async updateSyllable(
